@@ -22,7 +22,7 @@ html, body
 
 #aurora
 {
-	bottom: 60px;
+	top: 60px;
 	position: absolute;
 	width: 100%;
 }
