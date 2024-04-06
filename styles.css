@@ -1,138 +1,204 @@
-* {
-    padding: 0px;
-    margin: 0px;
+*
+{
+   	padding: 0px;
+	margin: 0px;
 }
-
-html, body {
-    background: #000000;
-    width: 100%;
-    height: 100%;
+html, body
+{
+	background: #000000;
+	width: 100%;
+	height: 100%;
 }
-
-#wrap {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
+#wrap
+{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	margin: 0 auto 0 auto;
+	overflow: hidden;
 }
-
-#aurora {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+#aurora
+{
+	position: absolute;
+	width: 100%;
 }
-
-section {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
+section
+{
+	/*border-radius*/
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	height: 20px;
+	width: 100%;
+	position: top;
+	margin: auto;
 }
-
-#one, #two, #three, #four, #five {
-    animation-duration: 30s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-name: drift;
-    background: transparent;
+#one
+{
+	/*animation*/
+	-webkit-animation: one 5s ease-in-out infinite alternate;
+	-moz-animation: one 5s ease-in-out infinite alternate;
+	-ms-animation: one 5s ease-in-out infinite alternate;
+	-o-animation: one 5s ease-in-out infinite alternate;
+	animation: one 5s ease-in-out infinite alternate;
 }
-
-@keyframes drift {
-    0%, 100% {
-        background: linear-gradient(to right, #473C78, #F72A3B, #473C78);
-    }
-    50% {
-        background: linear-gradient(to right, #F72A3B, #473C78, #F72A3B);
-    }
+@-webkit-keyframes 
+one { from {
+-webkit-box-shadow: 0 0 250px 20px #473C78;
 }
-
-/* You can add similar keyframe animations for each section if you want different color transitions */
-
-#aurora::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 15%; /* Adjust this height to control how much of the page the effect covers */
-    background: inherit;
-    opacity: 0.6;
-    animation: shimmer 5s infinite alternate;
+to { -webkit-box-shadow: 0 0 100px 15px #F72A3B; }
 }
-
-@keyframes shimmer {
-    0%, 100% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 0.8;
-    }
+@-moz-keyframes 
+one { from {
+-moz-box-shadow: 0 0 250px 20px #473C78;
 }
-
-/* Apply specific animations to each section for variety */
-#one {
-    animation-name: driftOne;
+to { -moz-box-shadow: 0 0 100px 15px #F72A3B; }
 }
-
-@keyframes driftOne {
-    0%, 100% {
-        background: linear-gradient(to right, #473C78, #F72A3B, #473C78);
-    }
-    50% {
-        background: linear-gradient(to right, #F72A3B, #473C78, #F72A3B);
-    }
+@-o-keyframes 
+one { from {
+-o-box-shadow: 0 0 250px 20px #473C78;
 }
-
-#two {
-    animation-name: driftTwo;
+to { -o-box-shadow: 0 0 100px 15px #F72A3B; }
 }
-
-@keyframes driftTwo {
-    0%, 100% {
-        background: linear-gradient(to right, #18C499, #D8F05E, #18C499);
-    }
-    50% {
-        background: linear-gradient(to right, #D8F05E, #18C499, #D8F05E);
-    }
+@keyframes 
+one { from {
+box-shadow: 0 0 250px 20px #473C78;
 }
-
-#three {
-    animation-name: driftThree;
+to {box-shadow: 0 0 100px 15px #F72A3B; }
 }
-
-@keyframes driftThree {
-    0%, 100% {
-        background: linear-gradient(to right, #FFDD00, #3E33FF, #FFDD00);
-    }
-    50% {
-        background: linear-gradient(to right, #3E33FF, #FFDD00, #3E33FF);
-    }
+#two
+{
+	width: 90%;
+	/*animation*/
+	-webkit-animation: two 4s ease-in-out infinite alternate;
+	-moz-animation: two 4s ease-in-out infinite alternate;
+	-ms-animation: two 4s ease-in-out infinite alternate;
+	-o-animation: two 4s ease-in-out infinite alternate;
+	animation: two 4s ease-in-out infinite alternate;
 }
-
-#four {
-    animation-name: driftFour;
+@-webkit-keyframes 
+two { from {
+-webkit-box-shadow: 0 0 250px 20px #18C499;
 }
-
-@keyframes driftFour {
-    0%, 100% {
-        background: linear-gradient(to right, #781848, #F2BBE9, #781848);
-    }
-    50% {
-        background: linear-gradient(to right, #F2BBE9, #781848, #F2BBE9);
-    }
+to { -webkit-box-shadow: 0 0 100px 15px #D8F05E; }
 }
-
-#five {
-    animation-name: driftFive;
+@-moz-keyframes 
+two { from {
+-moz-box-shadow: 0 0 250px 20px #18C499;
 }
-
-@keyframes driftFive {
-    0%, 100% {
-        background: linear-gradient(to right, #42F2A1, #F4F6AD, #42F2A1);
-    }
-    50% {
-        background: linear-gradient(to right, #F4F6AD, #42F2A1, #F4F6AD);
-    }
+to { -moz-box-shadow: 0 0 100px 15px #D8F05E; }
+}
+@-o-keyframes 
+two { from {
+-o-box-shadow: 0 0 250px 20px #18C499;
+}
+to { -o-box-shadow: 0 0 100px 15px #D8F05E; }
+}
+@keyframes 
+two { from {
+box-shadow: 0 0 250px 20px #18C499;
+}
+to { box-shadow: 0 0 100px 15px #D8F05E; }
+}
+#three
+{
+	width: 80%;
+	/*animation*/
+	-webkit-animation: three 3s ease-in-out infinite alternate;
+	-moz-animation: three 3s ease-in-out infinite alternate;
+	-ms-animation: three 3s ease-in-out infinite alternate;
+	-o-animation: three 3s ease-in-out infinite alternate;
+	animation: three 3s ease-in-out infinite alternate;
+}
+@-webkit-keyframes 
+three { from {
+-webkit-box-shadow: 0 0 250px 20px #FFDD00;
+}
+to { -webkit-box-shadow: 0 0 100px 15px #3E33FF; }
+}
+@-moz-keyframes 
+three { from {
+-moz-box-shadow: 0 0 250px 20px #FFDD00;
+}
+to { -moz-box-shadow: 0 0 100px 15px #3E33FF }
+}
+@-o-keyframes 
+three { from {
+-o-box-shadow: 0 0 250px 20px #FFDD00;
+}
+to { -o-box-shadow: 0 0 100px 15px #3E33FF }
+}
+@keyframes 
+three { from {
+box-shadow: 0 0 250px 20px #FFDD00;
+}
+to { box-shadow: 0 0 100px 15px #3E33FF }
+}
+#four
+{
+	width: 70%;
+	/*animation*/
+	-webkit-animation: four 2s ease-in-out infinite alternate;
+	-moz-animation: four 2s ease-in-out infinite alternate;
+	-ms-animation: four 2s ease-in-out infinite alternate;
+	-o-animation: four 2s ease-in-out infinite alternate;
+	animation: four 2s ease-in-out infinite alternate;
+}
+@-webkit-keyframes 
+four { from {
+-webkit-box-shadow: 0 0 250px 20px #781848;
+}
+to { -webkit-box-shadow: 0 0 100px 15px #F2BBE9; }
+}
+@-moz-keyframes 
+four { from {
+-moz-box-shadow: 0 0 250px 20px #781848;
+}
+to { -moz-box-shadow: 0 0 100px 15px #F2BBE9; }
+}
+@-o-keyframes 
+four { from {
+-o-box-shadow: 0 0 250px 20px #781848;
+}
+to { -o-box-shadow: 0 0 100px 15px #F2BBE9; }
+}
+@keyframes 
+four { from {
+shadow: 0 0 250px 20px #781848;
+}
+to { shadow: 0 0 100px 15px #F2BBE9; }
+}
+#five
+{
+	width: 60%;
+	/*animation*/
+	-webkit-animation: five 1s ease-in-out infinite alternate;
+	-moz-animation: five 1s ease-in-out infinite alternate;
+	-ms-animation: five 1s ease-in-out infinite alternate;
+	-o-animation: five 1s ease-in-out infinite alternate;
+	animation: five 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes 
+five { from {
+-webkit-box-shadow: 0 0 250px 20px #42F2A1;
+}
+to { -webkit-box-shadow: 0 0 100px 15px #F4F6AD; }
+}
+@-moz-keyframes 
+five { from {
+-moz-box-shadow: 0 0 250px 20px #42F2A1;
+}
+to { -moz-box-shadow: 0 0 100px 15px #F4F6AD; }
+}
+@-o-keyframes 
+five { from {
+-o-box-shadow: 0 0 250px 20px #42F2A1;
+}
+to { -o-box-shadow: 0 0 100px 15px #F4F6AD; }
+}
+@keyframes 
+five { from {
+box-shadow: 0 0 250px 20px #42F2A1;
+}
+to { box-shadow: 0 0 100px 15px #F4F6AD; }
 }
