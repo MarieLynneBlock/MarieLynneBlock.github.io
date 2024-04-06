@@ -32,10 +32,10 @@ section
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	height: 20px;
 	width: 100%;
 	position: top;
 	margin: auto;
+
 }
 
 #one
@@ -47,32 +47,36 @@ section
 	-o-animation: one 5s ease-in-out infinite alternate;
 	animation: one 5s ease-in-out infinite alternate;
 }
-
 @-webkit-keyframes 
-one { 
-	from {-webkit-box-shadow: 0 0 250px 20px #473C78;
-}
-	to { -webkit-box-shadow: 0 0 100px 15px #F72A3B; }
+one { from {
+-webkit-box-shadow: 0 0 250px 20px #473C78;
 }
 
+to { -webkit-box-shadow: 0 0 100px 15px #F72A3B; }
+}
 @-moz-keyframes 
 one { from {
 -moz-box-shadow: 0 0 250px 20px #473C78;
 }
+
 to { -moz-box-shadow: 0 0 100px 15px #F72A3B; }
 }
 @-o-keyframes 
 one { from {
 -o-box-shadow: 0 0 250px 20px #473C78;
 }
+
 to { -o-box-shadow: 0 0 100px 15px #F72A3B; }
 }
+
 @keyframes 
 one { from {
 box-shadow: 0 0 250px 20px #473C78;
 }
+
 to {box-shadow: 0 0 100px 15px #F72A3B; }
 }
+
 #two
 {
 	width: 90%;
@@ -87,26 +91,32 @@ to {box-shadow: 0 0 100px 15px #F72A3B; }
 two { from {
 -webkit-box-shadow: 0 0 250px 20px #18C499;
 }
+
 to { -webkit-box-shadow: 0 0 100px 15px #D8F05E; }
 }
 @-moz-keyframes 
 two { from {
 -moz-box-shadow: 0 0 250px 20px #18C499;
 }
+
 to { -moz-box-shadow: 0 0 100px 15px #D8F05E; }
 }
 @-o-keyframes 
 two { from {
 -o-box-shadow: 0 0 250px 20px #18C499;
 }
+
 to { -o-box-shadow: 0 0 100px 15px #D8F05E; }
 }
+
 @keyframes 
 two { from {
 box-shadow: 0 0 250px 20px #18C499;
 }
+
 to { box-shadow: 0 0 100px 15px #D8F05E; }
 }
+
 #three
 {
 	width: 80%;
@@ -121,26 +131,32 @@ to { box-shadow: 0 0 100px 15px #D8F05E; }
 three { from {
 -webkit-box-shadow: 0 0 250px 20px #FFDD00;
 }
+
 to { -webkit-box-shadow: 0 0 100px 15px #3E33FF; }
 }
 @-moz-keyframes 
 three { from {
 -moz-box-shadow: 0 0 250px 20px #FFDD00;
 }
+
 to { -moz-box-shadow: 0 0 100px 15px #3E33FF }
 }
 @-o-keyframes 
 three { from {
 -o-box-shadow: 0 0 250px 20px #FFDD00;
 }
+
 to { -o-box-shadow: 0 0 100px 15px #3E33FF }
 }
+
 @keyframes 
 three { from {
 box-shadow: 0 0 250px 20px #FFDD00;
 }
+
 to { box-shadow: 0 0 100px 15px #3E33FF }
 }
+
 #four
 {
 	width: 70%;
@@ -155,26 +171,32 @@ to { box-shadow: 0 0 100px 15px #3E33FF }
 four { from {
 -webkit-box-shadow: 0 0 250px 20px #781848;
 }
+
 to { -webkit-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
 @-moz-keyframes 
 four { from {
 -moz-box-shadow: 0 0 250px 20px #781848;
 }
+
 to { -moz-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
 @-o-keyframes 
 four { from {
 -o-box-shadow: 0 0 250px 20px #781848;
 }
+
 to { -o-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
+
 @keyframes 
 four { from {
 shadow: 0 0 250px 20px #781848;
 }
+
 to { shadow: 0 0 100px 15px #F2BBE9; }
 }
+
 #five
 {
 	width: 60%;
@@ -189,23 +211,28 @@ to { shadow: 0 0 100px 15px #F2BBE9; }
 five { from {
 -webkit-box-shadow: 0 0 250px 20px #42F2A1;
 }
+
 to { -webkit-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
 @-moz-keyframes 
 five { from {
 -moz-box-shadow: 0 0 250px 20px #42F2A1;
 }
+
 to { -moz-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
 @-o-keyframes 
 five { from {
 -o-box-shadow: 0 0 250px 20px #42F2A1;
 }
+
 to { -o-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
+
 @keyframes 
 five { from {
 box-shadow: 0 0 250px 20px #42F2A1;
 }
+
 to { box-shadow: 0 0 100px 15px #F4F6AD; }
 }
