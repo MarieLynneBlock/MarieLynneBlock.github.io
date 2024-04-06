@@ -301,7 +301,8 @@ to { box-shadow: 0 0 100px 15px #F4F6AD; }
 
 /* Assigning color animations and positions to borealis elements */
 #borealis2 {
-  left: 20%; width: 0.3%;
+  left: 20%;
+  width: 10px;
   animation: borealis1Colors 20s infinite alternate, shimmerVertical 8s infinite alternate;
 }
 
