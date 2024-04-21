@@ -9,16 +9,24 @@ html, body {
   height: 100%;
 }
 
+#aurora-canvas, #clouds-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* This ensures that the canvas is below other elements like the aurora background */
+}
+
+
 #wrap {
   width: 100%;
   height: 100%;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  background: linear-gradient(to top, 
-              rgba(0, 12, 40, 1) 0%, 
-              rgba(0, 18, 75, 0.8) 20%, 
-              rgba(0, 25, 85, 0.6) 50%, 
+  background: linear-gradient(to top,
+              rgba(0, 12, 40, 1) 0%,
+              rgba(0, 18, 75, 0.8) 20%,
+              rgba(0, 25, 85, 0.6) 50%,
               transparent 100%),
               /* Starry night effect using radial gradients for stars */
               radial-gradient(circle, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
@@ -30,8 +38,18 @@ html, body {
 
 #aurora {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 12, 40, 1) 0%, rgba(0, 18, 75, 0.8) 20%, rgba(0, 25, 85, 0.6) 50%, transparent 100%);
+  animation: moveAurora 30s ease-in-out infinite;
+}
+
+@keyframes moveAurora {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 section
@@ -49,27 +67,28 @@ section
 #one
 {
 	/*animation*/
-	-webkit-animation: one 10s ease-in-out infinite alternate;
-	-moz-animation: one 10s ease-in-out infinite alternate;
-	-ms-animation: one 10s ease-in-out infinite alternate;
-	-o-animation: one 10s ease-in-out infinite alternate;
-	animation: one 10s ease-in-out infinite alternate;
+	-webkit-animation: one 8s ease-in-out infinite alternate;
+	-moz-animation: one 8s ease-in-out infinite alternate;
+	-ms-animation: one 8s ease-in-out infinite alternate;
+	-o-animation: one 8s ease-in-out infinite alternate;
+	animation: one 8s ease-in-out infinite alternate;
 }
-@-webkit-keyframes 
+
+@-webkit-keyframes
 one { from {
 -webkit-box-shadow: 0 0 250px 20px #473C78;
 }
 
 to { -webkit-box-shadow: 0 0 100px 15px #F72A3B; }
 }
-@-moz-keyframes 
+@-moz-keyframes
 one { from {
 -moz-box-shadow: 0 0 250px 20px #473C78;
 }
 
 to { -moz-box-shadow: 0 0 100px 15px #F72A3B; }
 }
-@-o-keyframes 
+@-o-keyframes
 one { from {
 -o-box-shadow: 0 0 250px 20px #473C78;
 }
@@ -77,7 +96,7 @@ one { from {
 to { -o-box-shadow: 0 0 100px 15px #F72A3B; }
 }
 
-@keyframes 
+@keyframes
 one { from {
 box-shadow: 0 0 250px 20px #473C78;
 }
@@ -89,27 +108,27 @@ to {box-shadow: 0 0 100px 15px #F72A3B; }
 {
 	width: 90%;
 	/*animation*/
-	-webkit-animation: two 9s ease-in-out infinite alternate;
-	-moz-animation: two 9s ease-in-out infinite alternate;
-	-ms-animation: two 9s ease-in-out infinite alternate;
-	-o-animation: two 9s ease-in-out infinite alternate;
-	animation: two 9s ease-in-out infinite alternate;
+	-webkit-animation: two 7s ease-in-out infinite alternate;
+	-moz-animation: two 7s ease-in-out infinite alternate;
+	-ms-animation: two 7s ease-in-out infinite alternate;
+	-o-animation: two 7s ease-in-out infinite alternate;
+	animation: two 7s ease-in-out infinite alternate;
 }
-@-webkit-keyframes 
+@-webkit-keyframes
 two { from {
 -webkit-box-shadow: 0 0 250px 20px #18C499;
 }
 
 to { -webkit-box-shadow: 0 0 100px 15px #D8F05E; }
 }
-@-moz-keyframes 
+@-moz-keyframes
 two { from {
 -moz-box-shadow: 0 0 250px 20px #18C499;
 }
 
 to { -moz-box-shadow: 0 0 100px 15px #D8F05E; }
 }
-@-o-keyframes 
+@-o-keyframes
 two { from {
 -o-box-shadow: 0 0 250px 20px #18C499;
 }
@@ -117,7 +136,7 @@ two { from {
 to { -o-box-shadow: 0 0 100px 15px #D8F05E; }
 }
 
-@keyframes 
+@keyframes
 two { from {
 box-shadow: 0 0 250px 20px #18C499;
 }
@@ -129,27 +148,27 @@ to { box-shadow: 0 0 100px 15px #D8F05E; }
 {
 	width: 80%;
 	/*animation*/
-	-webkit-animation: three 8s ease-in-out infinite alternate;
-	-moz-animation: three 8s ease-in-out infinite alternate;
-	-ms-animation: three 8s ease-in-out infinite alternate;
-	-o-animation: three 8s ease-in-out infinite alternate;
-	animation: three 8s ease-in-out infinite alternate;
+	-webkit-animation: three 6s ease-in-out infinite alternate;
+	-moz-animation: three 6s ease-in-out infinite alternate;
+	-ms-animation: three 6s ease-in-out infinite alternate;
+	-o-animation: three 6s ease-in-out infinite alternate;
+	animation: three 6s ease-in-out infinite alternate;
 }
-@-webkit-keyframes 
+@-webkit-keyframes
 three { from {
 -webkit-box-shadow: 0 0 250px 20px #FFDD00;
 }
 
 to { -webkit-box-shadow: 0 0 100px 15px #3E33FF; }
 }
-@-moz-keyframes 
+@-moz-keyframes
 three { from {
 -moz-box-shadow: 0 0 250px 20px #FFDD00;
 }
 
 to { -moz-box-shadow: 0 0 100px 15px #3E33FF }
 }
-@-o-keyframes 
+@-o-keyframes
 three { from {
 -o-box-shadow: 0 0 250px 20px #FFDD00;
 }
@@ -157,7 +176,7 @@ three { from {
 to { -o-box-shadow: 0 0 100px 15px #3E33FF }
 }
 
-@keyframes 
+@keyframes
 three { from {
 box-shadow: 0 0 250px 20px #FFDD00;
 }
@@ -169,27 +188,27 @@ to { box-shadow: 0 0 100px 15px #3E33FF }
 {
 	width: 70%;
 	/*animation*/
-	-webkit-animation: four 7s ease-in-out infinite alternate;
-	-moz-animation: four 7s ease-in-out infinite alternate;
-	-ms-animation: four 7s ease-in-out infinite alternate;
-	-o-animation: four 7s ease-in-out infinite alternate;
-	animation: four 7s ease-in-out infinite alternate;
+	-webkit-animation: four 5s ease-in-out infinite alternate;
+	-moz-animation: four 5s ease-in-out infinite alternate;
+	-ms-animation: four 5s ease-in-out infinite alternate;
+	-o-animation: four 5s ease-in-out infinite alternate;
+	animation: four 5s ease-in-out infinite alternate;
 }
-@-webkit-keyframes 
+@-webkit-keyframes
 four { from {
 -webkit-box-shadow: 0 0 250px 20px #781848;
 }
 
 to { -webkit-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
-@-moz-keyframes 
+@-moz-keyframes
 four { from {
 -moz-box-shadow: 0 0 250px 20px #781848;
 }
 
 to { -moz-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
-@-o-keyframes 
+@-o-keyframes
 four { from {
 -o-box-shadow: 0 0 250px 20px #781848;
 }
@@ -197,7 +216,7 @@ four { from {
 to { -o-box-shadow: 0 0 100px 15px #F2BBE9; }
 }
 
-@keyframes 
+@keyframes
 four { from {
 shadow: 0 0 250px 20px #781848;
 }
@@ -209,27 +228,27 @@ to { shadow: 0 0 100px 15px #F2BBE9; }
 {
 	width: 60%;
 	/*animation*/
-	-webkit-animation: five 6s ease-in-out infinite alternate;
-	-moz-animation: five 6s ease-in-out infinite alternate;
-	-ms-animation: five 6s ease-in-out infinite alternate;
-	-o-animation: five 6s ease-in-out infinite alternate;
-	animation: five 6s ease-in-out infinite alternate;
+	-webkit-animation: five 4s ease-in-out infinite alternate;
+	-moz-animation: five 4s ease-in-out infinite alternate;
+	-ms-animation: five 4s ease-in-out infinite alternate;
+	-o-animation: five 4s ease-in-out infinite alternate;
+	animation: five 4s ease-in-out infinite alternate;
 }
-@-webkit-keyframes 
+@-webkit-keyframes
 five { from {
 -webkit-box-shadow: 0 0 250px 20px #42F2A1;
 }
 
 to { -webkit-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
-@-moz-keyframes 
+@-moz-keyframes
 five { from {
 -moz-box-shadow: 0 0 250px 20px #42F2A1;
 }
 
 to { -moz-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
-@-o-keyframes 
+@-o-keyframes
 five { from {
 -o-box-shadow: 0 0 250px 20px #42F2A1;
 }
@@ -237,7 +256,7 @@ five { from {
 to { -o-box-shadow: 0 0 100px 15px #F4F6AD; }
 }
 
-@keyframes 
+@keyframes
 five { from {
 box-shadow: 0 0 250px 20px #42F2A1;
 }
@@ -260,15 +279,14 @@ to { box-shadow: 0 0 100px 15px #F4F6AD; }
 .borealis {
   position: absolute;
   top: 2%;
-  height: 40%;
+  height: 15%;
   width: 2%;
   background: linear-gradient(to bottom, rgba(0, 255, 255, 0.8), rgba(143, 0, 255, 0.8), transparent);
   filter: blur(30px);
   opacity: 0.8;
-  animation: shimmerVertical 8s infinite alternate;
+  animation: shimmerVertical 6s infinite alternate;
 }
 
-/* Updated keyframes for a more dynamic shimmer */
 @keyframes shimmerVertical {
   0%, 100% {
     transform: scaleY(1) translateX(0%);
@@ -280,13 +298,266 @@ to { box-shadow: 0 0 100px 15px #F4F6AD; }
   }
 }
 
-/* Individual borealis elements with varied widths, delays, and starting positions */
-#borealis1 { left: 10%; width: 3%; animation-delay: 0s; }
-#borealis2 { left: 20%; width: 2%; animation-delay: 1s; }
-#borealis3 { left: 30%; width: 4%; animation-delay: 2s; }
-#borealis4 { left: 40%; width: 2.5%; animation-delay: 3s; }
-#borealis5 { left: 50%; width: 3.5%; animation-delay: 4s; }
-#borealis6 { left: 60%; width: 3%; animation-delay: 5s; }
-#borealis7 { left: 70%; width: 2%; animation-delay: 6s; }
-#borealis8 { left: 80%; width: 4%; animation-delay: 7s; }
-#borealis9 { left: 90%; width: 2.5%; animation-delay: 8s; }
+/* Dynamic colour changes for each borealis element */
+@keyframes borealis1Colors { /* Colors for borealis1 */ }
+@keyframes borealis2Colors { /* Colors for borealis2 */ }
+@keyframes borealis3Colors { /* Colors for borealis1 */ }
+@keyframes borealis4Colors { /* Colors for borealis2 */ }
+@keyframes borealis5Colors { /* Colors for borealis1 */ }
+@keyframes borealis6Colors { /* Colors for borealis2 */ }
+@keyframes borealis7Colors { /* Colors for borealis1 */ }
+@keyframes borealis8Colors { /* Colors for borealis2 */ }
+@keyframes borealis9Colors { /* Colors for borealis2 */ }
+
+/* BOREALIS 1 */
+/* Colour change keyframe Borealis1 */
+@keyframes borealis1Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis1 */
+@keyframes moveBorealis1 {
+  0%, 100% {
+    left: 0%;
+  }
+  50% {
+    left: 23%; /* Move from 0% to 25% */
+  }
+}
+
+#borealis1 {
+  left: 10%;
+  width: 1%;
+  animation: borealis1Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis1 10s infinite alternate;
+}
+
+
+/* BOREALIS 2 */
+/* Colour change keyframe Borealis2 */
+@keyframes borealis2Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis2 */
+@keyframes moveBorealis2 {
+  0%, 100% {
+    left: 11%;
+  }
+  50% {
+    left: 31%;
+  }
+}
+
+#borealis2 {
+  left: 20%;
+  width: 1%;
+  animation: borealis2Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis2 8s infinite alternate;
+}
+
+/* BOREALIS 3 */
+/* Colour change keyframe Borealis3 */
+@keyframes borealis3Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis3 */
+@keyframes moveBorealis3 {
+  0%, 100% {
+    left: 28%;
+  }
+  50% {
+    left: 34%;
+  }
+}
+
+#borealis3 {
+  left: 30%;
+  width: 1%;
+  animation: borealis3Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis3 12s infinite alternate;
+}
+
+/* BOREALIS 4 */
+/* Colour change keyframe Borealis4 */
+@keyframes borealis4Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis3 */
+@keyframes moveBorealis4 {
+  0%, 100% {
+    left: 29%;
+  }
+  50% {
+    left: 45%;
+  }
+}
+
+#borealis4 {
+  left: 40%;
+  width: 1%;
+  animation: borealis4Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis4 5s infinite alternate;
+}
+
+/* BOREALIS 5 */
+/* Colour change keyframe Borealis5 */
+@keyframes borealis5Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis5 */
+@keyframes moveBorealis5 {
+  0%, 100% {
+    left: 35%;
+  }
+  50% {
+    left: 60%;
+  }
+}
+
+#borealis5 {
+  left: 50%;
+  width: 1%;
+  animation: borealis5Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis5 11s infinite alternate;
+}
+
+/* BOREALIS 6 */
+/* Colour change keyframe Borealis6 */
+@keyframes borealis6Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis6 */
+@keyframes moveBorealis6 {
+  0%, 100% {
+    left: 31%;
+  }
+  50% {
+    left: 75%;
+  }
+}
+
+#borealis6 {
+  left: 60%;
+  width: 1%;
+  animation: borealis6Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis6 7s infinite alternate;
+}
+
+/* BOREALIS 7 */
+/* Colour change keyframe Borealis7 */
+@keyframes borealis7Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis7 */
+@keyframes moveBorealis7 {
+  0%, 100% {
+    left: 62%;
+  }
+  50% {
+    left: 83%;
+  }
+}
+
+#borealis7 {
+  left: 70%;
+  width: 1%;
+  animation: borealis7Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis7 5s infinite alternate;
+}
+
+/* BOREALIS 8 */
+/* Colour change keyframe Borealis8 */
+@keyframes borealis8Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis8 */
+@keyframes moveBorealis8 {
+  0%, 100% {
+    left: 74%;
+  }
+  50% {
+    left: 89%;
+  }
+}
+
+#borealis8 {
+  left: 80%;
+  width: 1%;
+  animation: borealis8Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis8 15s infinite alternate;
+}
+
+/* BOREALIS 9 */
+/* Colour change keyframe Borealis9 */
+@keyframes borealis9Colors {
+  0% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+  25% { background: linear-gradient(to top, rgba(143, 0, 255, 0.8), transparent); }
+  50% { background: linear-gradient(to top, rgba(255, 144, 0, 0.8), transparent); }
+  75% { background: linear-gradient(to top, rgba(0, 255, 144, 0.8), transparent); }
+  100% { background: linear-gradient(to top, rgba(0, 255, 255, 0.8), transparent); }
+}
+
+/* Movement for borealis9 */
+@keyframes moveBorealis9 {
+  0%, 100% {
+    left: 79%;
+  }
+  50% {
+    left: 100%;
+  }
+}
+
+#borealis9 {
+  left: 90%;
+  width: 1%;
+  animation: borealis9Colors 20s infinite alternate,
+  shimmerVertical 8s infinite alternate,
+  moveBorealis9 10s infinite alternate;
+}
