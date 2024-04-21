@@ -1,52 +1,91 @@
 let auroraSketch = function(p) {
   let yPosNoiseOffset = 0;
-  let colorOffset = 0; // Offset for color cycling
+  let maxWaveHeight = 7; // Max vertical movement for the base wave
 
-  // Enhance green presence and introduce smooth cyclic color transitions
-  let auroraColors = [
-      p.color(125, 253, 128, 150), // Green dominant
-      p.color(125, 253, 128, 150), // Repeat Green for longer presence
-      p.color(24, 149, 155, 150),  // Cyan
-      p.color(205, 57, 53, 150),   // Red
-      p.color(230, 201, 77, 150),  // Yellow
-      p.color(220, 112, 40, 150),  // Orange
-      p.color(125, 253, 128, 150)  // Green to ease back into start
-  ];
+  let auroraGreen = p.color(0, 255, 150); // Vibrant Aurora Green
+  let auroraPurple = p.color(128, 0, 128); // Purple/Pink for the top
 
-  function drawAurora() {
-    let noiseScale = 0.005;
-    let maxHeight = p.height / 2;
+  // Starting axiom with an initial weight
+  let axiom = { symbol: "A", weight: 2 };
+  let sentence = [axiom];
 
-    p.background(0, 0, 0, 25); // Slight fade effect for motion blur
-    let indexStep = p.width / (auroraColors.length - 1); // Step index by width divided by colors length minus one to loop
+  // Updated rules with dynamic stroke weights
+  let rules = {
+    "A": [
+      { symbol: "A", weight: () => p.random(0.5, 3) }, // Random weight between 0.5 and 3
+      { symbol: "B", weight: () => p.random(1, 4) }  // Random weight between 1 and 4
+    ],
+    "B": [
+      { symbol: "A", weight: () => p.random(1, 4) } // Random weight between 1 and 4
+    ]
+  };
 
-    for (let i = 0; i < p.width; i += 10) {
-      let noiseVal = p.noise(i * noiseScale, yPosNoiseOffset);
-      let lineHeight = p.map(noiseVal, 0, 1, 0, maxHeight);
+  function generate() {
+    let nextSentence = [];
 
-      // Calculate color based on position and colorOffset for dynamic cycling
-      let index = (i / indexStep + colorOffset) % (auroraColors.length - 1);
-      let colorIndex = Math.floor(index);
-      let nextIndex = (colorIndex + 1) % auroraColors.length;
-      let colorLerp = p.lerpColor(auroraColors[colorIndex], auroraColors[nextIndex], index % 1);
+    for (let i = 0; i < sentence.length; i++) {
+      let char = sentence[i].symbol;
 
-      p.stroke(colorLerp);
-      p.strokeWeight(2);
-      p.line(i, 0, i, lineHeight);
+      if (rules[char]) {
+        let productions = rules[char];
+        productions.forEach(production => {
+
+          // Introduce a probability of skipping a production for a more natural effect
+          if (p.random() > 0.1) {
+            nextSentence.push({ symbol: production.symbol, weight: production.weight() });
+          }
+        });
+      } else {
+        nextSentence.push(sentence[i]);
+      }
     }
-
-    yPosNoiseOffset += 0.005;  // Slow vertical movement
-    colorOffset += 0.02;  // Increment to shift colors over time
+    sentence = nextSentence;
   }
 
   p.setup = function() {
     p.createCanvas(p.windowWidth, p.windowHeight);
     p.background(0);
+    setInterval(generate, 2000); // Evolve the L-system every 2 seconds
   };
 
   p.draw = function() {
     drawAurora();
   };
+
+  function drawAurora() {
+    let noiseScale = 0.1;
+    let baseHeight = p.height * 0.5 - maxWaveHeight;
+
+    p.background(0, 0, 0, 25); // Slight fade effect for motion blur
+
+    let baselineOffsets = [];
+
+    for (let i = 0; i < p.width; i += 10) {
+      //let waveOffset = p.noise(i * noiseScale, yPosNoiseOffset) * maxWaveHeight * 2 - maxWaveHeight;
+      let waveOffset = i * 0.05;
+      baselineOffsets.push(baseHeight + waveOffset);
+    }
+
+    for (let i = 0; i < p.width; i += 10) {
+      let baseY = baselineOffsets[i / 10];
+      let lineHeight = p.map(p.noise(i * noiseScale, yPosNoiseOffset), 0, 1.5, 0, p.height - 2);
+
+      for (let j = 0; j < lineHeight; j++) {
+        let gradientRatio = j / lineHeight;
+        let interColor = p.lerpColor(auroraGreen, auroraPurple, gradientRatio);
+        let alpha = p.map(j, 0, lineHeight, 255, 0);
+
+        let strokeIndex = Math.floor(i / 10) % sentence.length;
+        let strokeWeight = sentence[strokeIndex].weight;
+
+        p.stroke(p.red(interColor), p.green(interColor), p.blue(interColor), alpha);
+        p.strokeWeight(strokeWeight);
+        p.line(i, baseY - j, i, baseY - (j - 1));
+      }
+    }
+
+    yPosNoiseOffset += 0.01; // Increment to shift the noise
+  }
 };
 
 new p5(auroraSketch, 'aurora-canvas');
