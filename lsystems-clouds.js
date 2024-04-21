@@ -2,11 +2,11 @@ let rules = [{ a: "F", b: "F-F++F-F" }];
 let maxGenerations = 5;
 
 function setup() {
-    let cnv = createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(windowWidth, windowHeight);
     cnv.style('position', 'absolute');
     cnv.style('top', '0');
     cnv.style('left', '0');
-    cnv.style('z-index', '1');  // Make sure this is below aurora z-index if they're styled with CSS
+    cnv.style('z-index', '1');
 
     // Initialize multiple fractals
     fractals = [
