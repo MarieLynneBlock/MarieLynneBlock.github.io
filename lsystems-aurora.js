@@ -58,18 +58,34 @@ let auroraSketch = function(p) {
 
     p.background(0, 0, 0, 25); // Slight fade effect for motion blur
 
-    let baselineOffsets = [];
+    let baselineOffsets = [];   // For the base wave across the screen
+    let secondWaveOffsets = []; // For the second wave in the top right corner
 
     for (let i = 0; i < p.width; i += 10) {
-      //let waveOffset = p.noise(i * noiseScale, yPosNoiseOffset) * maxWaveHeight * 2 - maxWaveHeight;
-      let waveOffset = i * 0.05;
-      baselineOffsets.push(baseHeight + waveOffset);
+
+      // First wave configuration
+      let frequency = 0.004; // Frequency for the wave length
+      let diagonalShift = i * 0.2; // Linearly increasing offset for diagonal effect
+      let waveOffset = p.noise(i * noiseScale, yPosNoiseOffset) * maxWaveHeight; // Amplitude
+      waveOffset += Math.sin(i * frequency) * maxWaveHeight * 10; // Sine wave for wavy effect
+      waveOffset += diagonalShift; // Adding diagonal shift component
+      baselineOffsets.push(baseHeight + waveOffset); // Position in the viewport
+
+      // Second wave configuration
+      let secondWaveFrequency = 0.009; // Frequency for the wave lenght
+      let secondWaveDiagonalShift = (p.width - i) * 0.1; // Diagonal effect from right to left
+      let secondWaveOffset = p.noise(i * noiseScale, yPosNoiseOffset + 1000) * maxWaveHeight * 0.5; // Noise offset and scale
+      secondWaveOffset += Math.sin(i * secondWaveFrequency) * maxWaveHeight * 5; // Amplitude
+      secondWaveOffset += secondWaveDiagonalShift; // Adding diagonal shift component
+      secondWaveOffsets.push(p.height * 0.35 + secondWaveOffset); // Positioned higher in the viewport
     }
 
     for (let i = 0; i < p.width; i += 10) {
-      let baseY = baselineOffsets[i / 10];
+      let baseY = baselineOffsets[i / 10];         // Base wave y-position
+      let secondBaseY = secondWaveOffsets[i / 10]; // Second wave y-position
       let lineHeight = p.map(p.noise(i * noiseScale, yPosNoiseOffset), 0, 1.5, 0, p.height - 2);
 
+      // Gradient colours for the Aurora effect
       for (let j = 0; j < lineHeight; j++) {
         let gradientRatio = j / lineHeight;
         let interColor = p.lerpColor(auroraGreen, auroraPurple, gradientRatio);
@@ -78,13 +94,18 @@ let auroraSketch = function(p) {
         let strokeIndex = Math.floor(i / 10) % sentence.length;
         let strokeWeight = sentence[strokeIndex].weight;
 
+        // Drawing the waves
         p.stroke(p.red(interColor), p.green(interColor), p.blue(interColor), alpha);
         p.strokeWeight(strokeWeight);
-        p.line(i, baseY - j, i, baseY - (j - 1));
+        p.line(i, baseY - j, i, baseY - (j - 1)); // Drawing the first wave
+
+        if (secondBaseY - j > 0 && secondBaseY - j < p.height) {
+          p.line(i, secondBaseY - j, i, secondBaseY - (j - 1)); // Drawing the second wave
+        }
       }
     }
 
-    yPosNoiseOffset += 0.01; // Increment to shift the noise
+    yPosNoiseOffset += 0.01; // Perlin Noise for dynamic effect
   }
 };
 
