@@ -61,8 +61,11 @@ let auroraSketch = function(p) {
     let baselineOffsets = [];
 
     for (let i = 0; i < p.width; i += 10) {
-      //let waveOffset = p.noise(i * noiseScale, yPosNoiseOffset) * maxWaveHeight * 2 - maxWaveHeight;
-      let waveOffset = i * 0.05;
+      let frequency = 0.004; // Frequency for the wave length
+      let diagonalShift = i * 0.2; // Linearly increasing offset for diagonal effect
+      let waveOffset = p.noise(i * noiseScale, yPosNoiseOffset) * maxWaveHeight;
+      waveOffset += Math.sin(i * frequency) * maxWaveHeight * 10; // Sine wave for wavy effect
+      waveOffset += diagonalShift; // Adding diagonal shift component
       baselineOffsets.push(baseHeight + waveOffset);
     }
 
