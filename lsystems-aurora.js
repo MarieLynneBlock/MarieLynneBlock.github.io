@@ -3,7 +3,7 @@ let auroraSketch = function(p) {
   let maxWaveHeight = 7; // Max vertical movement for the base wave
 
   let auroraGreen = p.color(0, 255, 150); // Vibrant Aurora Green
-  let auroraPurple = p.color(128, 0, 128); // Purple/Pink for the top
+  let auroraPurple = p.color(128, 0, 128); // Purple for the top
 
   // Starting axiom with an initial weight
   let axiom = { symbol: "A", weight: 2 };
