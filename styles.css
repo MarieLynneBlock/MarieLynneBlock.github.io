@@ -30,7 +30,7 @@ html, body {
 .top-title {
   top: 10%;
   font-size: 5vw; /* Responsive font size based on viewport width */
-  font-weight: 400; /* Normal weight */
+  font-weight: 200; /* Normal weight */
   background: linear-gradient(270deg, rgba(236, 168, 207, 0.95), rgba(64, 224, 208, 0.95));
   background-size: 400% 400%;
   -webkit-background-clip: text;
@@ -45,11 +45,19 @@ html, body {
 }
 
 /* Static bottom title */
-.bottom-title {
-  bottom: 18%;
+.sub-title {
+  bottom: 10%;
   font-size: 2vw; /* Responsive smaller font size */
   font-weight: 100; /* Thin */
   color: rgba(64, 224, 208, 0.95); /* Light teal color */
+}
+
+/* Static degree title */
+.degree-title {
+  bottom: 7%;
+  font-size: 1.3vw; /* Responsive smaller font size */
+  font-weight: 50; /* Thin */
+  color: rgba(236, 168, 207, 0.95) /* Light pink colour */
 }
 
 /* Wrapping element for aurora canvas */
@@ -69,6 +77,14 @@ html, body {
 
 /* Aurora canvas settings */
 #aurora-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Ensures that the canvas is below other elements */
+}
+
+/* Aurora canvas settings */
+#stars-canvas {
   position: absolute;
   top: 0;
   left: 0;
