@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <link rel="stylesheet" href="styles.css">
 
@@ -8,27 +8,79 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <!-- P5.js -->
+  <!-- p5.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
   <!-- Sketches -->
   <script src="lsystems-aurora.js"></script>
   <script src="lsystems-stars.js"></script>
+  <script src="lsystems-clouds.js"></script>
+  <script src="lsystems-winter.js"></script>
+  <title>Portfolio: Harmony in Algorithmic Beauty</title>
 </head>
+
 <body>
   <article id="wrap">
-    <article id="aurora">
-
-      <!-- Title above the aurora -->
+    <!-- Aurora Section -->
+    <section id="aurora">
       <div class="title top-title">Harmony in Algorithmic Beauty</div>
-
-      <!-- Sketches canvas containers -->
-      <div id="aurora-canvas"></div>
-
-      <!-- Title below the aurora -->
+      <div id="aurora-canvas" class="canvas-container"></div>
       <div class="title sub-title">Exploring the Synergy of L-Systems in Combined Visual and Music Generation</div>
-      <div class="title degree-title">part of the requirements for the award of the Degree in Creative Computing of the University of London</div>
-    </article>
+      <div class="title degree-title">Part of the requirements for the award of the Degree in Creative Computing of the University of London</div>
+    </section>
+
+    <!-- Stars Section -->
+    <section id="stars">
+      <div id="stars-canvas" class="canvas-container">
+        <!-- Buttons Section -->
+        <div class="buttons-overlay">
+          <a href="https://github.com/MarieLynneBlock" class="button" target="_blank">
+            <img src="socials-images/github.png" alt="GitHub">
+          </a>
+          <a href="https://www.instagram.com/themunchkinalgorithm/" class="button" target="_blank">
+            <img src="socials-images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.linkedin.com/in/marielynneblock/" class="button" target="_blank">
+            <img src="socials-images/linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clouds Section -->
+    <section id="clouds">
+      <div id="clouds-canvas" class="canvas-container"></div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-grid">
+          <div class="portfolio-item rainbow-001">
+            <div class="overlay-text">Rainbow 001</div>
+          </div>
+          <div class="portfolio-item rainbow-002">
+            <div class="overlay-text">Rainbow 002</div>
+          </div>
+          <div class="portfolio-item rainbow-003">
+            <div class="overlay-text">Rainbow 003</div>
+          </div>
+          <div class="portfolio-item pine-001">
+            <div class="overlay-text">Pine 001</div>
+          </div>
+          <div class="portfolio-item pine-002">
+            <div class="overlay-text">Pine 002</div>
+          </div>
+          <div class="portfolio-item pine-003">
+            <div class="overlay-text">Pine 003</div>
+          </div>
+          <div class="portfolio-item pine-004">
+            <div class="overlay-text">Pine 004</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Winter Section -->
+    <section id="winter">
+      <div id="winter-canvas" class="canvas-container"></div>
+    </section>
   </article>
 </body>
 </html>
