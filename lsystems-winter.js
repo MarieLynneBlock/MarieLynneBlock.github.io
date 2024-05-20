@@ -1,17 +1,19 @@
 const winterSketch = (p) => {
-  let snowflakes = [];
-  let trees = [];
+  let snowflakes = []; // Array to hold snowflake objects
+  let trees = []; // Array to hold tree objects
 
-  const trunkColors = ["#c2653c", "#9d5d5d", "#5a3e36"];
-  const foliageColors = ["#4da2bb", "#3b6978", "#7aa892", "#508b8c"];
-  const foliageTypes = ["round", "pine", "triangle", "fir"];
+  const trunkColors = ["#c2653c", "#9d5d5d", "#5a3e36"]; // Colours for tree trunks
+  const foliageColors = ["#4da2bb", "#3b6978", "#7aa892", "#508b8c"]; // Colours for tree foliage
+  const foliageTypes = ["round", "pine", "triangle", "fir"]; // Types of foliage shapes
 
+  // Rules for trunk generation with random weights
   const trunkRules = {
     "A": [{ symbol: "#c2653c", weight: () => p.random(0.8, 1.5) }],
     "B": [{ symbol: "#9d5d5d", weight: () => p.random(1.2, 2.0) }],
     "C": [{ symbol: "#5a3e36", weight: () => p.random(0.7, 1.3) }]
   };
 
+  // Rules for foliage generation with random weights and colours
   const foliageRules = {
     "A": [{ symbol: "round", color: () => foliageColors[0], weight: () => p.random(1, 2) }],
     "B": [{ symbol: "pine", color: () => foliageColors[1], weight: () => p.random(1.5, 3) }],
@@ -19,21 +21,30 @@ const winterSketch = (p) => {
     "D": [{ symbol: "fir", color: () => foliageColors[3], weight: () => p.random(1.5, 2.5) }]
   };
 
+  /**
+   * p5.js setup function. Initialises canvas and generates the winter scene.
+   */
   p.setup = () => {
     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
     canvas.parent("winter-canvas");
     p.frameRate(30);
-    generateWinterScene();
+    generateWinterScene(); // Generate initial snowflakes and trees
   };
 
+  /**
+   * p5.js draw function. Continuously draws the background, trees, snowflakes, and snow layer.
+   */
   p.draw = () => {
-    drawGradientBackground(); // Gradient background color
-    drawAll(trees, drawTreeTrunk);
-    drawAll(trees, drawTreeFoliage);
-    drawAll(snowflakes, drawSnowflake);
-    drawSnowLayer();
+    drawGradientBackground(); // Draw gradient background
+    drawAll(trees, drawTreeTrunk); // Draw tree trunks
+    drawAll(trees, drawTreeFoliage); // Draw tree foliage
+    drawAll(snowflakes, drawSnowflake); // Draw snowflakes
+    drawSnowLayer(); // Draw the snow layer
   };
 
+  /**
+   * Draws a gradient background from mid-sky to snow colour.
+   */
   function drawGradientBackground() {
     const midSky = p.color(129, 161, 193);
     const snow = p.color(236, 239, 244);
@@ -45,13 +56,16 @@ const winterSketch = (p) => {
     }
   }
 
+  /**
+   * Generates the initial winter scene with snowflakes and trees.
+   */
   function generateWinterScene() {
     // Generate snowflakes
     for (let i = 0; i < 100; i++) {
       snowflakes.push({ x: p.random(p.width), y: p.random(-p.height, p.height), size: p.random(3, 8) });
     }
 
-    // Generate L-System Trees using trunk and foliage rules
+    // Generate trees using L-System rules for trunk and foliage
     const baseX = 100;
     let currentX = baseX;
 
@@ -80,16 +94,29 @@ const winterSketch = (p) => {
     }
   }
 
+  /**
+   * Draws all elements in a collection using a provided draw function.
+   * @param {Array} collection - Collection of elements to draw.
+   * @param {Function} drawFunction - Function to draw an individual element.
+   */
   function drawAll(collection, drawFunction) {
     collection.forEach(drawFunction);
   }
 
+  /**
+   * Draws the trunk of a tree.
+   * @param {Object} tree - Tree object containing trunk properties.
+   */
   function drawTreeTrunk(tree) {
     const trunkHeight = 70 * tree.trunkSize;
     p.fill(tree.trunkColor);
     p.rect(tree.x, tree.y - trunkHeight, 15 * tree.trunkSize, trunkHeight, 5, 5, 0, 0);
   }
 
+  /**
+   * Draws the foliage of a tree.
+   * @param {Object} tree - Tree object containing foliage properties.
+   */
   function drawTreeFoliage(tree) {
     const trunkHeight = 70 * tree.trunkSize;
     const foliageY = tree.y - trunkHeight;
@@ -105,6 +132,10 @@ const winterSketch = (p) => {
     }
   }
 
+  /**
+   * Draws a snowflake and updates its position.
+   * @param {Object} snowflake - Snowflake object containing position and size properties.
+   */
   function drawSnowflake(snowflake) {
     p.fill(255);
     p.noStroke();
@@ -115,6 +146,13 @@ const winterSketch = (p) => {
     }
   }
 
+  /**
+   * Draws a round tree foliage.
+   * @param {number} x - The x-coordinate of the tree foliage.
+   * @param {number} y - The y-coordinate of the tree foliage.
+   * @param {number} [size=1] - The size of the tree foliage.
+   * @param {string} [color="#4da2bb"] - The colour of the tree foliage.
+   */
   function drawRoundTree(x, y, size = 1, color = "#4da2bb") {
     p.fill(color);
     p.ellipse(x, y - 30 * size, 60 * size, 60 * size);
@@ -122,6 +160,13 @@ const winterSketch = (p) => {
     p.ellipse(x + 20 * size, y - 15 * size, 45 * size, 45 * size);
   }
 
+  /**
+   * Draws a pine tree foliage.
+   * @param {number} x - The x-coordinate of the tree foliage.
+   * @param {number} y - The y-coordinate of the tree foliage.
+   * @param {number} [size=1] - The size of the tree foliage.
+   * @param {string} [color="#3b6978"] - The colour of the tree foliage.
+   */
   function drawPineTree(x, y, size = 1, color = "#3b6978") {
     p.fill(color);
     p.triangle(x - 45 * size, y, x + 45 * size, y, x, y - 90 * size);
@@ -129,11 +174,25 @@ const winterSketch = (p) => {
     p.triangle(x - 25 * size, y - 60 * size, x + 25 * size, y - 60 * size, x, y - 90 * size);
   }
 
+  /**
+   * Draws a triangle tree foliage.
+   * @param {number} x - The x-coordinate of the tree foliage.
+   * @param {number} y - The y-coordinate of the tree foliage.
+   * @param {number} [size=1] - The size of the tree foliage.
+   * @param {string} [color="#7aa892"] - The colour of the tree foliage.
+   */
   function drawTriangleTree(x, y, size = 1, color = "#7aa892") {
     p.fill(color);
     p.triangle(x - 45 * size, y, x + 45 * size, y, x, y - 90 * size);
   }
 
+  /**
+   * Draws a fir tree foliage.
+   * @param {number} x - The x-coordinate of the tree foliage.
+   * @param {number} y - The y-coordinate of the tree foliage.
+   * @param {number} [size=1] - The size of the tree foliage.
+   * @param {string} [color="#508b8c"] - The colour of the tree foliage.
+   */
   function drawFirTree(x, y, size = 1, color = "#508b8c") {
     p.fill(color);
     const trunkWidth = 15 * size;
@@ -160,6 +219,9 @@ const winterSketch = (p) => {
     p.endShape(p.CLOSE);
   }
 
+  /**
+   * Draws a snow layer at the bottom of the canvas.
+   */
   function drawSnowLayer() {
     const snowColor = p.color(255, 255, 255);
     p.fill(snowColor);
@@ -183,6 +245,9 @@ const winterSketch = (p) => {
     p.endShape(p.CLOSE);
   }
 
+  /**
+   * Adjusts canvas size when window is resized.
+   */
   p.windowResized = () => {
     p.resizeCanvas(p.windowWidth, p.windowHeight);
   };
